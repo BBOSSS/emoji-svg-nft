@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800"><!-- @click="emit('change')" -->
+    <defs><!-- head 右下侧 放射渐变(径向渐变) -->
+        <radialGradient id="ccclaymoji-grad-dark" r="93%" cx="20%" cy="20%">
+            <stop offset="70%" stop-color="hsl(41, 100%, 67%)" stop-opacity="0"></stop>
+            <stop offset="97%" stop-color="#c99421" stop-opacity="1"></stop>
+        </radialGradient><!--
+        head 左上侧 -->
+        <radialGradient id="ccclaymoji-grad-light" r="65%" cx="28%" cy="20%">
+            <stop offset="0%" stop-color="#fffc89" stop-opacity="0.75"></stop>
+            <stop offset="100%" stop-color="hsl(41, 100%, 67%)" stop-opacity="0"></stop>
+        </radialGradient><!--
+        head -->
+        <filter id="ccclaymoji-blur" x="-100%" y="-100%" width="400%" height="400%"
+            filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation="30" x="0%" y="0%" width="100%" height="100%"
+                in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur>
+        </filter>
+        <filter id="inner-blur" x="-100%" y="-100%" width="400%" height="400%"
+            filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation="2" x="0%" y="0%" width="100%" height="100%"
+                in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur>
+        </filter><!--
+        眼睛阴影 -->
+        <filter id="eye-shadow" x="-100%" y="-100%" width="400%" height="400%"
+            filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feDropShadow stdDeviation="10" dx="10" dy="10" flood-color="#000000"
+                flood-opacity="0.3" x="0%" y="0%" width="100%" height="100%" result="dropShadow"></feDropShadow>
+        </filter><!--
+        眼睛: 包含上部分叠加色 -> 眼影 -->
+        <linearGradient id="eye-light" gradientTransform="rotate(-25)" x1="50%" y1="0%" x2="50%"
+            y2="100%">
+            <stop offset="20%" stop-color="#323232" stop-opacity="1"></stop>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"></stop>
+        </linearGradient><!--
+        嘴部灯光 -->
+        <linearGradient id="mouth-light" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#ff9667" stop-opacity="1"></stop>
+            <stop offset="100%" stop-color="hsl(3, 100%, 51%)" stop-opacity="0"></stop>
+        </linearGradient><!--
+        嘴部阴影 -->
+        <filter id="mouth-shadow" x="-100%" y="-100%" width="400%" height="400%"
+            filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feDropShadow stdDeviation="10" dx="10" dy="10" x="0%" y="0%" width="100%" height="100%"
+                result="dropShadow" flood-color="#c20000" flood-opacity="0.9"></feDropShadow>
+        </filter>
+    </defs>
+    <g stroke-linecap="round"><!-- head --><!-- fill="#c89924" -->
+        <path
+            d="M650 449.99998478233977C650 602.9582058065985 552.9582210242588 726.9541626799139 400 726.9541626799139C247.04245283018867 726.9541626799139 150 602.9582058065985 150 449.99998478233977C150 297.04243761252843 247.04245283018867 173.04580688476562 400 173.04580688476562C552.9582210242588 173.04580688476562 650 297.04243761252843 650 449.99998478233977Z "
+            fill="hsl(41, 100%, 67%)" opacity="0.25" filter="url(#ccclaymoji-blur)"></path>
+        <path
+            d="M650 399.99999613096236C650 561.6737853047515 561.6737891737891 635.7549818859482 400 635.7549818859482C238.3269230769231 635.7549818859482 150 561.6737853047515 150 399.99999613096236C150 238.3269192078854 238.3269230769231 164.24501037597656 400 164.24501037597656C561.6737891737891 164.24501037597656 650 238.3269192078854 650 399.99999613096236Z "
+            fill="hsl(41, 100%, 67%)"></path>
+        <path
+            d="M650 399.99999613096236C650 561.6737853047515 561.6737891737891 635.7549818859482 400 635.7549818859482C238.3269230769231 635.7549818859482 150 561.6737853047515 150 399.99999613096236C150 238.3269192078854 238.3269230769231 164.24501037597656 400 164.24501037597656C561.6737891737891 164.24501037597656 650 238.3269192078854 650 399.99999613096236Z "
+            fill="url(#ccclaymoji-grad-dark)"></path>
+        <path
+            d="M650 399.99999613096236C650 561.6737853047515 561.6737891737891 635.7549818859482 400 635.7549818859482C238.3269230769231 635.7549818859482 150 561.6737853047515 150 399.99999613096236C150 238.3269192078854 238.3269230769231 164.24501037597656 400 164.24501037597656C561.6737891737891 164.24501037597656 650 238.3269192078854 650 399.99999613096236Z "
+            fill="url(#ccclaymoji-grad-light)"></path><!-- eye -->
+        <g>
+            <ellipse rx="42" ry="42" cx="306" cy="340" fill="#000000" filter="url(#eye-shadow)"></ellipse>
+            <ellipse rx="42" ry="42" cx="306" cy="340" fill="url(#eye-light)"
+                filter="url(#inner-blur)"></ellipse>
+        </g>
+        <g>
+            <ellipse rx="43" ry="43" cx="486" cy="340" fill="#000000" filter="url(#eye-shadow)"></ellipse>
+            <ellipse rx="43" ry="43" cx="486" cy="340" fill="url(#eye-light)"
+                filter="url(#inner-blur)"></ellipse>
+        </g><!-- mouth x,y -> d值变化 -->
+        <path d="M340 512.5Q390 562.5 460 512.5" stroke-width="32" stroke="hsl(3, 100%, 51%)"
+            fill="none" filter="url(#mouth-shadow)" transform="rotate(0, 400, 400)"></path><!--
+        mouth 灯光 -->
+        <path d="M340 512.5Q390 562.5 460 512.5" stroke-width="6.666666666666667"
+            stroke="url(#mouth-light)" fill="none" filter="url(#inner-blur)"
+            transform="rotate(0, 400, 400)"></path>
+    </g>
+</svg>
