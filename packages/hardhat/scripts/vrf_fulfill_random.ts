@@ -2,8 +2,8 @@ import { ethers } from "hardhat/";
 import { VRFCoordinatorV2Mock } from "../typechain-types";
 
 async function main() {
-  const requestId = 5;
-  const consumer = "0x1eB5C49630E08e95Ba7f139BcF4B9BA171C9a8C7";
+  const requestId = 1;
+  const consumer = "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6";
   const vrfCoordinatorV2Mock: VRFCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock");
   await vrfCoordinatorV2Mock.fulfillRandomWords(requestId, consumer);
   console.log("vrfCoordinatorV2Mock.fulfillRandomWords success");

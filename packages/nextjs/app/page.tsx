@@ -34,7 +34,7 @@ const Home: NextPage = () => {
   const { data: NftMintedEvents, isLoading: isNftMintedEventsLoading } = useScaffoldEventHistory({
     contractName: "SvgEmojiNFT",
     eventName: "NftMinted",
-    fromBlock: 0n,
+    fromBlock: 6593899n,
     watch: true,
   });
 

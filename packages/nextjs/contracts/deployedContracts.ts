@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     SvgEmoji: {
-      address: "0x40A633EeF249F21D95C8803b7144f19AAfeEF7ae",
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       abi: [
         {
           inputs: [
@@ -291,7 +291,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgEmojiNFT: {
-      address: "0x1eB5C49630E08e95Ba7f139BcF4B9BA171C9a8C7",
+      address: "0x9A676e781A523b5d0C0e43731313A708CB607508",
       abi: [
         {
           inputs: [
@@ -1035,6 +1035,19 @@ const deployedContracts = {
         {
           inputs: [
             {
+              internalType: "bool",
+              name: "_useVRF",
+              type: "bool",
+            },
+          ],
+          name: "setUseVRF",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
               internalType: "bytes4",
               name: "interfaceId",
               type: "bytes4",
@@ -1195,6 +1208,19 @@ const deployedContracts = {
         },
         {
           inputs: [],
+          name: "useVRF",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "withdraw",
           outputs: [],
           stateMutability: "nonpayable",
@@ -1248,7 +1274,7 @@ const deployedContracts = {
       },
     },
     SvgEmojiProxy: {
-      address: "0x1eB5C49630E08e95Ba7f139BcF4B9BA171C9a8C7",
+      address: "0x9A676e781A523b5d0C0e43731313A708CB607508",
       abi: [
         {
           inputs: [
@@ -1319,7 +1345,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgEyes: {
-      address: "0x773330693cb7d5D233348E25809770A32483A940",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       abi: [
         {
           inputs: [
@@ -1405,7 +1431,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgHead: {
-      address: "0x408F924BAEC71cC3968614Cb2c58E155A35e6890",
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
           inputs: [
@@ -1463,7 +1489,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgMouth: {
-      address: "0x52173b6ac069619c206b9A0e75609fC92860AB2A",
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
       abi: [
         {
           inputs: [
@@ -1510,7 +1536,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     VRFCoordinatorV2Mock: {
-      address: "0x47c05BCCA7d57c87083EB4e586007530eE4539e9",
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       abi: [
         {
           inputs: [
@@ -2209,6 +2235,1537 @@ const deployedContracts = {
         requestSubscriptionOwnerTransfer:
           "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol",
       },
+    },
+  },
+  11155111: {
+    SvgEmoji: {
+      address: "0x4e401fcb736433733025FA7A725686c221FA6f53",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "value",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "length",
+              type: "uint256",
+            },
+          ],
+          name: "StringsInsufficientHexLength",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes",
+                  name: "color",
+                  type: "bytes",
+                },
+                {
+                  internalType: "uint8",
+                  name: "shape",
+                  type: "uint8",
+                },
+              ],
+              internalType: "struct Defs.HeadInfo",
+              name: "head",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint16",
+                      name: "rx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "ry",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cy",
+                      type: "uint16",
+                    },
+                  ],
+                  internalType: "struct Defs.EyeInfo",
+                  name: "left",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint16",
+                      name: "rx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "ry",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cy",
+                      type: "uint16",
+                    },
+                  ],
+                  internalType: "struct Defs.EyeInfo",
+                  name: "right",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct Defs.EyesInfo",
+              name: "eyes",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint16",
+                  name: "size",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint16",
+                  name: "width",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint16",
+                  name: "rotation",
+                  type: "uint16",
+                },
+              ],
+              internalType: "struct Defs.MouthInfo",
+              name: "mouth",
+              type: "tuple",
+            },
+          ],
+          name: "renderSvgImage",
+          outputs: [
+            {
+              internalType: "bytes",
+              name: "image",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "tempTokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              components: [
+                {
+                  internalType: "bytes",
+                  name: "color",
+                  type: "bytes",
+                },
+                {
+                  internalType: "uint8",
+                  name: "shape",
+                  type: "uint8",
+                },
+              ],
+              internalType: "struct Defs.HeadInfo",
+              name: "head",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint16",
+                      name: "rx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "ry",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cy",
+                      type: "uint16",
+                    },
+                  ],
+                  internalType: "struct Defs.EyeInfo",
+                  name: "left",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint16",
+                      name: "rx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "ry",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cy",
+                      type: "uint16",
+                    },
+                  ],
+                  internalType: "struct Defs.EyeInfo",
+                  name: "right",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct Defs.EyesInfo",
+              name: "eyes",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint16",
+                  name: "size",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint16",
+                  name: "width",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint16",
+                  name: "rotation",
+                  type: "uint16",
+                },
+              ],
+              internalType: "struct Defs.MouthInfo",
+              name: "mouth",
+              type: "tuple",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    SvgEmojiNFT: {
+      address: "0xf2383D001084cc6865915aA5a6Bc921215e57feb",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_vrfCoordinatorV2",
+              type: "address",
+            },
+            {
+              internalType: "uint64",
+              name: "_subscriptionId",
+              type: "uint64",
+            },
+            {
+              internalType: "uint32",
+              name: "_callbackGasLimit",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_gasLane",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "target",
+              type: "address",
+            },
+          ],
+          name: "AddressEmptyCode",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "implementation",
+              type: "address",
+            },
+          ],
+          name: "ERC1967InvalidImplementation",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ERC1967NonPayable",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ERC721EnumerableForbiddenBatchMint",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "ERC721IncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ERC721InsufficientApproval",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "approver",
+              type: "address",
+            },
+          ],
+          name: "ERC721InvalidApprover",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "ERC721InvalidOperator",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "ERC721InvalidOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "receiver",
+              type: "address",
+            },
+          ],
+          name: "ERC721InvalidReceiver",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+          ],
+          name: "ERC721InvalidSender",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ERC721NonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "ERC721OutOfBoundsIndex",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "FailedInnerCall",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidInitialization",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotInitializing",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "have",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "want",
+              type: "address",
+            },
+          ],
+          name: "OnlyCoordinatorCanFulfill",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnableInvalidOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "OwnableUnauthorizedAccount",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "UUPSUnauthorizedCallContext",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "slot",
+              type: "bytes32",
+            },
+          ],
+          name: "UUPSUnsupportedProxiableUUID",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "version",
+              type: "uint64",
+            },
+          ],
+          name: "Initialized",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "minter",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "requestId",
+              type: "uint256",
+            },
+          ],
+          name: "NftMinted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "minter",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "requestId",
+              type: "uint256",
+            },
+          ],
+          name: "NftRequested",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "implementation",
+              type: "address",
+            },
+          ],
+          name: "Upgraded",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "addr",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "Withdraw",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "UPGRADE_INTERFACE_VERSION",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "curve",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getApproved",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "initialize",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "limit",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "mintItem",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "name",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "price",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "requestId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256[]",
+              name: "randomWords",
+              type: "uint256[]",
+            },
+          ],
+          name: "rawFulfillRandomWords",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "requestIdToTokenId",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bool",
+              name: "_useVRF",
+              type: "bool",
+            },
+          ],
+          name: "setUseVRF",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "tokenByIndex",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "tokenOfOwnerByIndex",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalSupply",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newImplementation",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          name: "upgradeToAndCall",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "useVRF",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "withdraw",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        UPGRADE_INTERFACE_VERSION:
+          "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+        proxiableUUID:
+          "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+        upgradeToAndCall:
+          "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+        approve:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        balanceOf:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        getApproved:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        isApprovedForAll:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        name: "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        ownerOf:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        safeTransferFrom:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        setApprovalForAll:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        supportsInterface:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        symbol:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        tokenByIndex:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        tokenOfOwnerByIndex:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        tokenURI:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        totalSupply:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        transferFrom:
+          "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol",
+        owner:
+          "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+        renounceOwnership:
+          "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+        transferOwnership:
+          "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+        rawFulfillRandomWords:
+          "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol",
+      },
+    },
+    SvgEmojiProxy: {
+      address: "0xf2383D001084cc6865915aA5a6Bc921215e57feb",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "implementation",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "_data",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "payable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "target",
+              type: "address",
+            },
+          ],
+          name: "AddressEmptyCode",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "implementation",
+              type: "address",
+            },
+          ],
+          name: "ERC1967InvalidImplementation",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ERC1967NonPayable",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "FailedInnerCall",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "implementation",
+              type: "address",
+            },
+          ],
+          name: "Upgraded",
+          type: "event",
+        },
+        {
+          stateMutability: "payable",
+          type: "fallback",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    SvgEyes: {
+      address: "0x3A20Ee2F68A0d91a4d854eaC2Ae729EAC5d2cc9f",
+      abi: [
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint16",
+                      name: "rx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "ry",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cy",
+                      type: "uint16",
+                    },
+                  ],
+                  internalType: "struct Defs.EyeInfo",
+                  name: "left",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint16",
+                      name: "rx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "ry",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cx",
+                      type: "uint16",
+                    },
+                    {
+                      internalType: "uint16",
+                      name: "cy",
+                      type: "uint16",
+                    },
+                  ],
+                  internalType: "struct Defs.EyeInfo",
+                  name: "right",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct Defs.EyesInfo",
+              name: "eyes",
+              type: "tuple",
+            },
+          ],
+          name: "getEmojiEyes",
+          outputs: [
+            {
+              internalType: "bytes",
+              name: "defs",
+              type: "bytes",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    SvgHead: {
+      address: "0x813ff00350C3a82458E65c97C914a25f848466B9",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "value",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "length",
+              type: "uint256",
+            },
+          ],
+          name: "StringsInsufficientHexLength",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes",
+                  name: "color",
+                  type: "bytes",
+                },
+                {
+                  internalType: "uint8",
+                  name: "shape",
+                  type: "uint8",
+                },
+              ],
+              internalType: "struct Defs.HeadInfo",
+              name: "headInfo",
+              type: "tuple",
+            },
+          ],
+          name: "getEmojiHead",
+          outputs: [
+            {
+              internalType: "bytes",
+              name: "defs",
+              type: "bytes",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    SvgMouth: {
+      address: "0x51d38F1FFFcbBd5961d188943C4a6692b11ca2e6",
+      abi: [
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint16",
+                  name: "size",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint16",
+                  name: "width",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint16",
+                  name: "rotation",
+                  type: "uint16",
+                },
+              ],
+              internalType: "struct Defs.MouthInfo",
+              name: "mouth",
+              type: "tuple",
+            },
+          ],
+          name: "getEmojiMouth",
+          outputs: [
+            {
+              internalType: "bytes",
+              name: "defs",
+              type: "bytes",
+            },
+            {
+              internalType: "bytes",
+              name: "data",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
     },
   },
 } as const;

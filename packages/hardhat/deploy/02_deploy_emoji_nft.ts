@@ -97,6 +97,7 @@ const deployEmojiNft: DeployFunction = async function (hre: HardhatRuntimeEnviro
   console.log("SvgEmojiProxy address is ", svgEmojiProxyAddr);
   fs.appendFileSync(".env", `\n${key}=${svgEmojiProxyAddr}\n`);
   console.log("Update EMOJI_NFT_PROXY_ADDRESS to .env");
+  
   // Add VRF Consumer: SvgEmojiProxy
   if (developmentChains.includes(hre.network.name)) {
     const vrfCoordinatorV2Mock: VRFCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock");

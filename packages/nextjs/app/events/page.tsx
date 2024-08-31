@@ -9,13 +9,13 @@ const Events: NextPage = () => {
   const { data: NftRequestedEvents, isLoading: iNftRequestedEventsLoading } = useScaffoldEventHistory({
     contractName: "SvgEmojiNFT",
     eventName: "NftRequested",
-    fromBlock: 0n,
+    fromBlock: 6593899n,
   });
 
   const { data: NftMintedEvents, isLoading: isNftMintedEventsLoading } = useScaffoldEventHistory({
     contractName: "SvgEmojiNFT",
     eventName: "NftMinted",
-    fromBlock: 0n,
+    fromBlock: 6593899n,
   });
 
   return (
@@ -26,7 +26,7 @@ const Events: NextPage = () => {
             <span className="loading loading-spinner loading-lg"></span>
           </div>
         ) : (
-          <div className="mt-8 w-4/5">
+          <div className="mt-8 w-2/3">
             <div className="text-center mb-4">
               <span className="block text-2xl font-bold">NftRequested Events</span>
             </div>
@@ -62,15 +62,12 @@ const Events: NextPage = () => {
             </div>
           </div>
         )}
-      </div>
-      
-      <div className="flex items-center flex-col flex-grow w-full">
         {isNftMintedEventsLoading ? (
           <div className="flex justify-center items-center mt-10">
             <span className="loading loading-spinner loading-lg"></span>
           </div>
         ) : (
-          <div className="mt-8 w-4/5">
+          <div className="mt-8 w-2/3">
             <div className="text-center mb-4">
               <span className="block text-2xl font-bold">NftMinted Events</span>
             </div>

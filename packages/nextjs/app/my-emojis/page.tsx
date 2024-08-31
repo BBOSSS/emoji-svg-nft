@@ -12,10 +12,14 @@ import {
   useScaffoldEventHistory
 } from "~~/hooks/scaffold-eth";
 
+import { Send } from "./components/Send";
+import { Approve } from "./components/Approve";
+
 const MyEmojis: NextPage = () => {
   const { address: connectedAddress } = useAccount();
   const [myEmojis, setMyEmojis] = useState<any[]>();
   const [loadingEmojis, setLoadingEmojis] = useState(true);
+  const [update, setUpdate] = useState(false);
 
   const [page, setPage] = useState(1n);
   const perPage = 4n;
@@ -40,7 +44,7 @@ const MyEmojis: NextPage = () => {
   const { data: NftMintedEvents, isLoading: isNftMintedEventsLoading } = useScaffoldEventHistory({
     contractName: "SvgEmojiNFT",
     eventName: "NftMinted",
-    fromBlock: 0n,
+    fromBlock: 6593899n,
     watch: true,
     filters: {
       minter: connectedAddress,
@@ -92,7 +96,7 @@ const MyEmojis: NextPage = () => {
     };
     updateAllEmojis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [balance, page, perPage, connectedAddress, Boolean(contract), nftMintedEventLength]);
+  }, [balance, page, perPage, connectedAddress, Boolean(contract), nftMintedEventLength, update]);
 
   return (
     <>
@@ -140,6 +144,24 @@ const MyEmojis: NextPage = () => {
                         <h2 className="text-xl font-bold">{emoji.name}</h2>
                         <Image src={emoji.image} alt={emoji.name} width="300" height="300" />
                         <p>{emoji.description}</p>
+                        <div className="card-actions justify-end">
+                          <Send 
+                            tokenId={emoji.id}
+                            onSuccess={() => setUpdate(!update)}
+                          />
+                          <Approve 
+                            tokenId={emoji.id}
+                            onSuccess={() => setUpdate(!update)}
+                          />
+                          <button
+                            className="btn btn-secondary btn-sm px-7 tracking-wide"
+                            onClick={() => {
+                              
+                            }}
+                          >
+                            Sell
+                          </button>
+                        </div>
                       </div>
                     );
                   })}

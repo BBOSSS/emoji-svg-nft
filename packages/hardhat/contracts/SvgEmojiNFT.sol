@@ -41,11 +41,12 @@ contract SvgEmojiNFT is
 	mapping(uint256 => bool) private tokenIdMinted;
 
     // Chainlink VRF Variables
+	bool public useVRF;
     VRFCoordinatorV2Interface private immutable vrfCoordinator;
-    uint64 private immutable subscriptionId;
     bytes32 private immutable gasLane;
+    uint64 private immutable subscriptionId;
     uint32 private immutable callbackGasLimit;
-    uint16 private constant REQUEST_CONFIRMATIONS = 1;
+    uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUM_WORDS = 2;
     mapping(uint256 => uint256) public requestIdToTokenId;
 
@@ -72,6 +73,11 @@ contract SvgEmojiNFT is
 		__Ownable_init(msg.sender);
 		__UUPSUpgradeable_init();
 		price = 0.001 ether;
+		useVRF = false;
+	}
+
+	function setUseVRF(bool _useVRF) public onlyOwner {
+		useVRF = _useVRF;
 	}
 
 	function mintItem() public payable returns (uint256) {
@@ -80,6 +86,10 @@ contract SvgEmojiNFT is
 
 		price = (price * curve) / 1000;
 		_tokenIds++;
+
+		if (!useVRF) {
+			return mintWithoutVRF();
+		}
 
 		uint256 requestId = vrfCoordinator.requestRandomWords(
 	        gasLane,
@@ -91,6 +101,23 @@ contract SvgEmojiNFT is
 		requestIdToTokenId[requestId] = _tokenIds;
 		_safeMint(msg.sender, _tokenIds);
 		emit NftRequested(msg.sender, requestId);
+		return _tokenIds;
+	}
+
+	function mintWithoutVRF() private returns (uint256) {
+		uint256 id = _tokenIds;
+		bytes32 prevHash1 = blockhash(block.number - 1);
+		bytes32 hash1 = keccak256(abi.encodePacked(prevHash1, address(this)));
+		bytes32 prevHash2 = blockhash(block.number - 2);
+		bytes32 hash2 = keccak256(abi.encodePacked(prevHash2, address(this)));
+		uint256[] memory randomWords = new uint[](2);
+		randomWords[0] = uint256(hash1);
+		randomWords[1] = uint256(hash2);
+		randomHead(id, randomWords);
+		randomEyes(id, randomWords);
+		randomMouth(id, randomWords);
+		_safeMint(msg.sender, _tokenIds);
+		tokenIdMinted[id] = true;
 		return _tokenIds;
 	}
 
