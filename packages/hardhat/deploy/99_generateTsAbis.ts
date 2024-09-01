@@ -97,6 +97,13 @@ function getContractDataFromDeployments() {
       svgEmojiNFT.address = svgEmojiProxy.address;
       contracts.SvgEmojiNFT = svgEmojiNFT;
     }
+    
+    const swapNFT = contracts.SwapNFT;
+    const swapNFTProxy = contracts.SwapNFTProxy;
+    if (swapNFT && swapNFTProxy) {
+      swapNFT.address = swapNFTProxy.address;
+      contracts.SwapNFT = swapNFT;
+    }
     output[chainId] = contracts;
   }
   return output;

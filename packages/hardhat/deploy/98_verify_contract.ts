@@ -37,10 +37,22 @@ const verifyContract: DeployFunction = async function (hre: HardhatRuntimeEnviro
     networkConfig[chainId].gasLane,
   ]);
   
-  const initCallData = svgEmojiNFT.interface.encodeFunctionData("initialize");
+  let initCallData = svgEmojiNFT.interface.encodeFunctionData("initialize");
   const svgEmojiProxy: SvgEmojiProxy = await ethers.getContract("SvgEmojiProxy");
-  const svgEmojiProxybAddr = await svgEmojiProxy.getAddress();
-  await verify(svgEmojiProxybAddr, [svgEmojiNftAddr, initCallData], "contracts/SvgEmojiProxy.sol:SvgEmojiProxy");
+  const svgEmojiProxyAddr = await svgEmojiProxy.getAddress();
+  await verify(svgEmojiProxyAddr, [svgEmojiNftAddr, initCallData], "contracts/SvgEmojiProxy.sol:SvgEmojiProxy");
+
+  
+  const swapNFT = await ethers.getContract("SwapNFT");
+  const swapNftAddr = await swapNFT.getAddress();
+  await verify(swapNftAddr, [svgEmojiProxyAddr]);
+
+  initCallData = swapNFT.interface.encodeFunctionData("initialize");
+  const swapNFTProxy = await ethers.getContract("SwapNFTProxy");
+  const swapNFTProxyAddr = await swapNFTProxy.getAddress();
+  await verify(swapNFTProxyAddr, [swapNftAddr, initCallData], "contracts/SwapNFTProxy.sol:SwapNFTProxy");
+
+
 };
 
 export default verifyContract;

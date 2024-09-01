@@ -8,14 +8,9 @@ export function getAllContracts() {
     return {};
   }
   const svgEmojiNFT = contractsData.SvgEmojiNFT;
-  if (!svgEmojiNFT) {
-    return contractsData;
-  }
-  // const svgEmojiProxy = contractsData.SvgEmojiProxy;
-  // if (svgEmojiProxy) {
-  //   svgEmojiNFT.address = svgEmojiProxy.address;
-  // }
+  const swapNFT = contractsData.SwapNFT;
   return {
-    SvgEmojiNFT: svgEmojiNFT
+    SvgEmojiNFT: svgEmojiNFT,
+    SwapNFT: swapNFT,
   };
 }

@@ -3,7 +3,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
-contract SvgEmojiProxy is ERC1967Proxy {
+contract SwapNFTProxy is ERC1967Proxy {
 	constructor(
 		address implementation,
 		bytes memory _data

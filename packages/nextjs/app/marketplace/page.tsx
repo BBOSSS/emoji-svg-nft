@@ -1,29 +1,32 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import type { NextPage } from "next";
 import { formatEther } from "viem";
 import { useAccount } from "wagmi";
+import { Address } from "~~/components/scaffold-eth";
 import {
   useScaffoldContract, 
   useScaffoldReadContract, 
   useScaffoldWriteContract,
-  useScaffoldEventHistory
+  useScaffoldEventHistory,
+  useDeployedContractInfo
 } from "~~/hooks/scaffold-eth";
+import { Price } from "./components/Price"
 
-import { Send } from "./components/Send";
-import { Approve } from "./components/Approve";
-import { Sell } from "./components/Sell";
-
-const MyEmojis: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
+const Marketplace: NextPage = () => {
+  const router = useRouter();
   const [myEmojis, setMyEmojis] = useState<any[]>();
   const [loadingEmojis, setLoadingEmojis] = useState(true);
   const [update, setUpdate] = useState(false);
 
   const [page, setPage] = useState(1n);
   const perPage = 4n;
+
+  const { writeContractAsync } = useScaffoldWriteContract("SwapNFT");
+  const { data: swapNFTContractData } = useDeployedContractInfo("SwapNFT");
 
   const { data: price } = useScaffoldReadContract({
     contractName: "SvgEmojiNFT",
@@ -35,11 +38,28 @@ const MyEmojis: NextPage = () => {
     functionName: "totalSupply",
   });
 
+  const marketplaceAddress = swapNFTContractData?.address;
+
   const { data: balance } = useScaffoldReadContract({
     contractName: "SvgEmojiNFT",
     functionName: "balanceOf",
-    args: [connectedAddress],
+    args: [marketplaceAddress],
   });
+
+  const purchaseNFT = async (tokenId: bigint, price: bigint) => {
+    try {
+      await writeContractAsync({
+        functionName: "purchase",
+        args: [tokenId],
+        value: price,
+      });
+      setTimeout(() => {
+        router.push("/my-emojis");
+      }, 777);
+    } catch (err) {
+      console.error("Error calling purchase function");
+    }
+  };
 
   const [nftMintedEventLength, setNftMintedEventLength] = useState(0);
   const { data: NftMintedEvents, isLoading: isNftMintedEventsLoading } = useScaffoldEventHistory({
@@ -48,7 +68,7 @@ const MyEmojis: NextPage = () => {
     fromBlock: 6593899n,
     watch: true,
     filters: {
-      minter: connectedAddress,
+      minter: marketplaceAddress,
     }
   });
 
@@ -62,27 +82,29 @@ const MyEmojis: NextPage = () => {
     }
   }, [NftMintedEvents, isNftMintedEventsLoading, nftMintedEventLength]);
 
-  const { writeContractAsync } = useScaffoldWriteContract("SvgEmojiNFT");
-
-  const { data: contract } = useScaffoldContract({
+  const { data: nft } = useScaffoldContract({
     contractName: "SvgEmojiNFT",
+  });
+  const { data: marketplace } = useScaffoldContract({
+    contractName: "SwapNFT",
   });
 
   useEffect(() => {
     const updateAllEmojis = async () => {
       setLoadingEmojis(true);
-      if (contract && balance && connectedAddress) {
+      if (nft && balance && marketplaceAddress && marketplace) {
         const collectibleUpdate = [];
         const startIndex = balance - 1n - perPage * (page - 1n);
         for (let tokenIndex = startIndex; tokenIndex > startIndex - perPage && tokenIndex >= 0; tokenIndex--) {
           try {
-            const tokenId = await contract.read.tokenOfOwnerByIndex([connectedAddress, tokenIndex]);
-            const tokenURI = await contract.read.tokenURI([tokenId]);
+            const tokenId = await nft.read.tokenOfOwnerByIndex([marketplaceAddress, tokenIndex]);
+            const tokenURI = await nft.read.tokenURI([tokenId]);
+            const [seller, price] = await marketplace.read.orderMap([tokenId]);
             const jsonManifestString = atob(tokenURI.substring(29));
 
             try {
               const jsonManifest = JSON.parse(jsonManifestString);
-              collectibleUpdate.push({ id: tokenId, uri: tokenURI, ...jsonManifest });
+              collectibleUpdate.push({ id: tokenId, uri: tokenURI, seller: seller, price: price, ...jsonManifest });
             } catch (e) {
               console.log(e);
             }
@@ -90,49 +112,30 @@ const MyEmojis: NextPage = () => {
             console.log(e);
           }
         }
-        // console.log("Collectible Update: ", collectibleUpdate);
+        console.log("Collectible Update: ", collectibleUpdate);
         setMyEmojis(collectibleUpdate);
       }
       setLoadingEmojis(false);
     };
     updateAllEmojis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [balance, page, perPage, connectedAddress, Boolean(contract), nftMintedEventLength, update]);
+  }, [balance, page, perPage, marketplaceAddress, Boolean(nft), nftMintedEventLength, update]);
 
   return (
     <>
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
+      <div className="flex items-center flex-col flex-grow pt-6">
+        {/* <div className="px-5">
           <h1 className="text-center">
-            <span className="block text-4xl font-bold">My Emojis</span>
+            <span className="block text-4xl font-bold">Marketplace Emojis</span>
           </h1>
-          <div className="flex flex-col justify-center items-center mt-4 space-x-2">
-            <button
-              onClick={async () => {
-                try {
-                  await writeContractAsync({
-                    functionName: "mintItem",
-                    value: price,
-                  });
-                } catch (e) {
-                  console.error(e);
-                }
-              }}
-              className="btn btn-secondary btn-sm"
-              disabled={!connectedAddress || !price}
-            >
-              Mint Now for {price ? (+formatEther(price)).toFixed(6) : "-"} ETH
-            </button>
-            <p>{Number(3728n - (totalSupply || 0n))} Emojis left</p>
-          </div>
-        </div>
+        </div> */}
 
-        <div className="flex-grow w-full mt-2 p-8">
+        <div className="flex-grow w-full mt-2 p-2">
           <div className="flex justify-center items-center space-x-2">
             {loadingEmojis ? (
               <p className="my-2 font-medium">Loading...</p>
             ) : !myEmojis?.length ? (
-              <p className="my-2 font-medium">No emojis minted</p>
+              <p className="my-2 font-medium">No emojis on marketplace</p>
             ) : (
               <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
@@ -143,20 +146,16 @@ const MyEmojis: NextPage = () => {
                         className="flex flex-col bg-base-100 p-5 text-center items-center max-w-xs rounded-3xl"
                       >
                         <h2 className="text-xl font-bold">{emoji.name}</h2>
+                        <Price className="text-xl text-blue-500 font-bold" nftPrice={emoji.price}></Price>
+                        <Address address={emoji.seller} />
                         <Image src={emoji.image} alt={emoji.name} width="300" height="300" />
                         <p>{emoji.description}</p>
                         <div className="card-actions justify-end">
-                          <Send
-                            tokenId={emoji.id}
-                            onSuccess={() => setUpdate(!update)}
-                          />
-                          <Approve 
-                            tokenId={emoji.id}
-                          />
-                          <Sell 
-                            tokenId={emoji.id}
-                            onSuccess={() => setUpdate(!update)}
-                          />
+                          <label
+                            className="btn btn-primary btn-sm font-normal gap-1 px-4"
+                            onClick={() => purchaseNFT(emoji.id, emoji.price)}>
+                            <span>Purchase</span> 
+                          </label>
                         </div>
                       </div>
                     );
@@ -187,4 +186,4 @@ const MyEmojis: NextPage = () => {
   );
 };
 
-export default MyEmojis;
+export default Marketplace;

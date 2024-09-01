@@ -12,9 +12,9 @@ import "hardhat-deploy-ethers";
 import "@openzeppelin/hardhat-upgrades";
 
 // Local proxy
-// import { ProxyAgent, setGlobalDispatcher } from "undici";
-// const proxyAgent = new ProxyAgent("http://192.168.4.141:7890");
-// setGlobalDispatcher(proxyAgent);
+import { ProxyAgent, setGlobalDispatcher } from "undici";
+const proxyAgent = new ProxyAgent("http://192.168.4.141:7890");
+setGlobalDispatcher(proxyAgent);
 
 // If not set, it uses ours Alchemy's default API key.
 // You can get your own at https://dashboard.alchemyapi.io
