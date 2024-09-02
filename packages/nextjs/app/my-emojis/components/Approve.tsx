@@ -26,9 +26,7 @@ export const Approve = ({tokenId, onSuccess}: ApproveNftProps) => {
         args: [inputAddress, tokenId],
       });
       setInputAddress("" as AddressType);
-      if (onSuccess) {
-        onSuccess();
-      }
+      onSuccess && onSuccess();
       setIsOpen(false); // 关闭弹窗
     } catch (err) {
       console.error("Error calling approve function");

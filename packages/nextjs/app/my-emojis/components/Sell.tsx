@@ -55,11 +55,9 @@ export const Sell = ({ tokenId, onSuccess }: SellNftProps) => {
         args: [tokenId, parseEther(inputPrice as `${number}`)],
       });
       setInputPrice("");
-      if (onSuccess) {
-        onSuccess();
-      }
+      onSuccess && onSuccess();
     } catch (err) {
-      console.error("Error calling transferFrom function");
+      console.error("Error calling list function");
     }
   };
 
@@ -84,7 +82,7 @@ export const Sell = ({ tokenId, onSuccess }: SellNftProps) => {
             </div>
             <div className="flex flex-col space-y-3">
               <EtherInput
-                placeholder="Sell Price (Ether)"
+                placeholder="Sell Price (Ether/Dollar)"
                 value={inputPrice}
                 onChange={value => setInputPrice(value)}
               />

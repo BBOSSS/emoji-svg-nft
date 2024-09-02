@@ -28,9 +28,7 @@ export const Send = ({tokenId, onSuccess}: SendNftProps) => {
         args: [connectedAddress, inputAddress, tokenId],
       });
       setInputAddress("" as AddressType);
-      if (onSuccess) {
-        onSuccess();
-      }
+      onSuccess && onSuccess();
     } catch (err) {
       console.error("Error calling transferFrom function");
     }

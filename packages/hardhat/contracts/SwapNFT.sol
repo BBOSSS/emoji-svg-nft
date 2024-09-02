@@ -143,7 +143,7 @@ contract SwapNFT is
 		}
 		// 将NFT转给买家
 		nft.safeTransferFrom(address(this), msg.sender, _tokenId);
-        ownerBalance[msg.sender]--;
+        ownerBalance[_order.owner]--;
 		// 将ETH转给卖家，多余ETH给买家退款
 		uint256 price = _order.price;
 		(bool success1, ) = payable(_order.owner).call{ value: price }("");
@@ -222,5 +222,9 @@ contract SwapNFT is
 		// This also deletes the contents at the last position of the array
 		delete _ownedTokensIndex[tokenId];
 		delete _ownedTokens[from][lastTokenIndex];
+	}
+
+	function balanceOf(address owner) public view returns (uint256) {
+		return ownerBalance[owner];
 	}
 }

@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     SvgEmoji: {
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      address: "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584",
       abi: [
         {
           inputs: [
@@ -291,7 +291,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgEmojiNFT: {
-      address: "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+      address: "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
       abi: [
         {
           inputs: [
@@ -1274,7 +1274,7 @@ const deployedContracts = {
       },
     },
     SvgEmojiProxy: {
-      address: "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+      address: "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
       abi: [
         {
           inputs: [
@@ -1345,7 +1345,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgEyes: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6",
       abi: [
         {
           inputs: [
@@ -1431,7 +1431,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgHead: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
       abi: [
         {
           inputs: [
@@ -1489,7 +1489,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgMouth: {
-      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      address: "0x04C89607413713Ec9775E14b954286519d836FEf",
       abi: [
         {
           inputs: [
@@ -1536,7 +1536,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SwapNFT: {
-      address: "0x95401dc811bb5740090279Ba06cfA8fcF6113778",
+      address: "0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7",
       abi: [
         {
           inputs: [
@@ -1917,6 +1917,25 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [],
           name: "initialize",
           outputs: [],
@@ -2150,7 +2169,7 @@ const deployedContracts = {
       },
     },
     SwapNFTProxy: {
-      address: "0x95401dc811bb5740090279Ba06cfA8fcF6113778",
+      address: "0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7",
       abi: [
         {
           inputs: [
@@ -2221,7 +2240,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     VRFCoordinatorV2Mock: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
       abi: [
         {
           inputs: [
@@ -4823,6 +4842,25 @@ const deployedContracts = {
             },
           ],
           name: "_ownedTokensIndex",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
           outputs: [
             {
               internalType: "uint256",

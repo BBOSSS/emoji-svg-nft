@@ -1,0 +1,28 @@
+/* .react-tabs {
+    font-family: Arial, sans-serif;
+} */
+
+.react-tabs__tab {
+    padding: 5px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #efefef;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.react-tabs__tab--selected {
+    background-color: #dfdfdf;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+}
+
+.react-tabs__tab-list {
+    border: none;
+}
+
+.react-tabs__tab-panel {
+    padding: 0px;
+    border: none;
+}

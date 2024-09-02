@@ -12,12 +12,15 @@ import {
   useScaffoldWriteContract,
   useScaffoldEventHistory
 } from "~~/hooks/scaffold-eth";
+// https://react-icons.github.io/react-icons/icons/fa/
+import { FaSync } from 'react-icons/fa';
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
   const [allEmojis, setAllEmojis] = useState<any[]>();
   const [page, setPage] = useState(1n);
   const [loadingEmojis, setLoadingEmojis] = useState(true);
+  const [update, setUpdate] = useState(false);
   const perPage = 4n;
 
   const { data: price } = useScaffoldReadContract({
@@ -53,41 +56,54 @@ const Home: NextPage = () => {
   const { data: contract } = useScaffoldContract({
     contractName: "SvgEmojiNFT",
   });
+  
+  async function getEmojiData(index: bigint) {
+    if (!contract || !totalSupply) {
+      return {};
+    }
+    try {
+      const tokenId = await contract.read.tokenByIndex([index]);
+      const tokenURI = await contract.read.tokenURI([tokenId]);
+      const jsonManifestString = atob(tokenURI.substring(29));
+
+      try {
+        const jsonManifest = JSON.parse(jsonManifestString);
+        return { id: tokenId, uri: tokenURI, ...jsonManifest };
+      } catch (e) {
+        console.log(e);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
     const updateAllEmojis = async () => {
       setLoadingEmojis(true);
       if (contract && totalSupply) {
-        const collectibleUpdate = [];
+        let collectibleUpdate = [];
+        const promises = [];
         const startIndex = totalSupply - 1n - perPage * (page - 1n);
         for (let tokenIndex = startIndex; tokenIndex > startIndex - perPage && tokenIndex >= 0; tokenIndex--) {
-          try {
-            const tokenId = await contract.read.tokenByIndex([tokenIndex]);
-            const tokenURI = await contract.read.tokenURI([tokenId]);
-            const jsonManifestString = atob(tokenURI.substring(29));
-
-            try {
-              const jsonManifest = JSON.parse(jsonManifestString);
-              collectibleUpdate.push({ id: tokenId, uri: tokenURI, ...jsonManifest });
-            } catch (e) {
-              console.log(e);
-            }
-          } catch (e) {
-            console.log(e);
-          }
+          const promise = getEmojiData(tokenIndex);
+          promises.push(promise);
         }
-        console.log("Collectible Update: ", collectibleUpdate);
+        try {
+          collectibleUpdate = await Promise.all(promises);
+        } catch (error) {
+            console.error("getEmojiData failed: ", error);
+        }
         setAllEmojis(collectibleUpdate);
       }
       setLoadingEmojis(false);
     };
     updateAllEmojis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalSupply, page, perPage, Boolean(contract), nftMintedEventLength]);
+  }, [totalSupply, page, perPage, Boolean(contract), nftMintedEventLength, update]);
 
   return (
     <>
-      <div className="flex items-center flex-col flex-grow pt-10">
+      <div className="flex items-center flex-col flex-grow pt-5">
         <div className="px-5">
           <h1 className="text-center">
             <span className="block text-4xl font-bold">Dynamic SVG Emojis</span>
@@ -96,7 +112,7 @@ const Home: NextPage = () => {
           <div className="text-center">
             <div>Only 3728 Dynamic SVG Emojis available on a price curve increasing 0.2% with each new mint.</div>
           </div>
-          <div className="flex flex-col justify-center items-center mt-6 space-x-2">
+          <div className="flex flex-col justify-center items-center mt-4 space-x-2">
             <button
               onClick={async () => {
                 try {
@@ -117,12 +133,19 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex-grow w-full mt-1 p-8">
+        <div className="flex-grow w-full mt-1 p-2">
           <div className="flex justify-center items-center space-x-2">
             {loadingEmojis ? (
               <p className="my-2 font-medium">Loading...</p>
             ) : !allEmojis?.length ? (
-              <p className="my-2 font-medium">No emojis minted</p>
+              <div className="flex flex-row">
+                <p className="my-2 font-medium me-3">No emojis minted</p>
+                <button onClick={() => {
+                  setUpdate(!update);
+                }}>
+                  <FaSync style={{ marginRight: '8px' }} />
+                </button>
+              </div>
             ) : (
               <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
