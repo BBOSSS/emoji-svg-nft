@@ -50,7 +50,6 @@ export const Holding = ({onSend, onSell, onApprove}: HoldingProps) => {
     args: [connectedAddress],
   });
 
-  const [nftMintedEventLength, setNftMintedEventLength] = useState(0);
   const { data: NftMintedEvents, isLoading: isNftMintedEventsLoading } = useScaffoldEventHistory({
     contractName: "SvgEmojiNFT",
     eventName: "NftMinted",
@@ -60,6 +59,7 @@ export const Holding = ({onSend, onSell, onApprove}: HoldingProps) => {
       minter: connectedAddress,
     }
   });
+  const [nftMintedEventLength, setNftMintedEventLength] = useState(NftMintedEvents ? NftMintedEvents.length : 0);
 
   useEffect(() => {
     if (
@@ -120,7 +120,7 @@ export const Holding = ({onSend, onSell, onApprove}: HoldingProps) => {
     };
     updateAllEmojis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [balance, page, perPage, connectedAddress, Boolean(contract), nftMintedEventLength, update]);
+  }, [balance, page, perPage, connectedAddress, Boolean(contract), update]);
 
   return (
     <>

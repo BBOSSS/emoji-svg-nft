@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     SvgEmoji: {
-      address: "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584",
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       abi: [
         {
           inputs: [
@@ -291,7 +291,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgEmojiNFT: {
-      address: "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
       abi: [
         {
           inputs: [
@@ -1274,7 +1274,7 @@ const deployedContracts = {
       },
     },
     SvgEmojiProxy: {
-      address: "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
       abi: [
         {
           inputs: [
@@ -1345,7 +1345,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgEyes: {
-      address: "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       abi: [
         {
           inputs: [
@@ -1431,7 +1431,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgHead: {
-      address: "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
           inputs: [
@@ -1489,7 +1489,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SvgMouth: {
-      address: "0x04C89607413713Ec9775E14b954286519d836FEf",
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
       abi: [
         {
           inputs: [
@@ -1536,7 +1536,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SwapNFT: {
-      address: "0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7",
+      address: "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
       abi: [
         {
           inputs: [
@@ -2169,7 +2169,7 @@ const deployedContracts = {
       },
     },
     SwapNFTProxy: {
-      address: "0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7",
+      address: "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
       abi: [
         {
           inputs: [
@@ -2240,7 +2240,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     VRFCoordinatorV2Mock: {
-      address: "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       abi: [
         {
           inputs: [

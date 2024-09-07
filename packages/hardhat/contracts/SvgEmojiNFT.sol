@@ -162,28 +162,18 @@ contract SvgEmojiNFT is
 	}
 
 	function randomEyes(uint256 id, uint256[] memory randomWords) internal {
+		uint16 r = uint16(randomWords[0] % 60 + 20);
+		uint16 c = uint16(randomWords[1] % 140 + 200);
 		eyesMap[id] = Defs.EyesInfo({
-			left: Defs.EyeInfo(39, 39, 306, 340),
-			right: Defs.EyeInfo(39, 39, 486, 340)
+			left: Defs.EyeInfo(r, r, 300, 330),
+			right: Defs.EyeInfo(r, r, 500, 330)
 		});
-		uint256 r = randomWords[0] % 80;
-		uint256 c = randomWords[1] % 520;
-		if (c % 3 == 0) {
-			eyesMap[id].left.rx = uint16(r + 20);
-			eyesMap[id].left.ry = uint16(r + 20);
-			eyesMap[id].left.cx = uint16(c + 130);
-			eyesMap[id].left.cy = uint16(c + 180);
-		} else if (c % 3 == 1) {
-			eyesMap[id].right.rx = uint16(r + 20);
-			eyesMap[id].right.ry = uint16(r + 20);
-			eyesMap[id].right.cx = uint16(c + 130);
-			eyesMap[id].right.cy = uint16(c + 180);
-		} else if (r % 2 == 0) {
-			eyesMap[id].left.rx = uint16(r + 20);
-			eyesMap[id].left.ry = uint16(r + 20);
+		if (c % 2 == 0) {
+			eyesMap[id].left.cx = c;
+			eyesMap[id].left.cy = c + 50;
 		} else {
-			eyesMap[id].right.rx = uint16(r + 20);
-			eyesMap[id].right.ry = uint16(r + 20);
+			eyesMap[id].right.cx = c + 260;
+			eyesMap[id].right.cy = c + 50;
 		}
 	}
 
@@ -191,8 +181,11 @@ contract SvgEmojiNFT is
 		uint16 size = uint16(randomWords[0] % 50);
 		uint16 width = uint16((randomWords[1] % 20) + 10);
 		uint16 rotation = uint16(
-			(randomWords[0] % 180) + (randomWords[1] % 180)
+			(randomWords[0] % 40) + (randomWords[1] % 40)
 		);
+		if (rotation > 40) {
+			rotation = 400 - rotation;
+		}
 		mouthMap[id] = Defs.MouthInfo(size, width, rotation);
 	}
 }

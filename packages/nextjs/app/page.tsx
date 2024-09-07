@@ -99,7 +99,7 @@ const Home: NextPage = () => {
     };
     updateAllEmojis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalSupply, page, perPage, Boolean(contract), nftMintedEventLength, update]);
+  }, [totalSupply, page, perPage, Boolean(contract), update]);
 
   return (
     <>

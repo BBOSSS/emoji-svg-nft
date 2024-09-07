@@ -128,7 +128,7 @@ export const Selling = ({ onRevoke, onUpdate }: SellingProps) => {
                       >
                         <h2 className="text-xl font-bold">{emoji.name}</h2>
                         <Price className="text-xl text-blue-500 font-bold" nftPrice={emoji.price}></Price>
-                        <Address address={emoji.seller} />
+                        {/* <Address address={emoji.seller} /> */}
                         <Image src={emoji.image} alt={emoji.name} width="300" height="300" />
                         <p>{emoji.description}</p>
                         <div className="card-actions justify-end">

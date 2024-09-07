@@ -38,11 +38,11 @@ export const Sell = ({ tokenId, onSuccess }: SellNftProps) => {
     if (approvedAddress != swapNFTContractData?.address) {
       notification.error(
         <>
-          <p className="font-bold mt-0 mb-1">
+          <p className="mt-0 mb-1">
             {`Emoji #${tokenId} not approve to the Contract`}
           </p>
           <div className="flex flex-row">
-            <span className="text-sm font-bold me-1">NFT-Swap Address:</span>
+            <span className="text-sm me-1">NFT-Swap Address:</span>
             <Address address={swapNFTContractData?.address} />
           </div>
         </>
