@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import type { NextPage } from "next";
+import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import {
   useScaffoldContract, 
@@ -19,6 +20,7 @@ import { FaSync } from 'react-icons/fa';
 
 const Marketplace: NextPage = () => {
   const router = useRouter();
+  const { address: connectedAddress } = useAccount();
   const [myEmojis, setMyEmojis] = useState<any[]>();
   const [loadingEmojis, setLoadingEmojis] = useState(true);
   const [update, setUpdate] = useState(false);
@@ -160,11 +162,12 @@ const Marketplace: NextPage = () => {
                         <Image src={emoji.image} alt={emoji.name} width="300" height="300" />
                         <p>{emoji.description}</p>
                         <div className="card-actions justify-end">
-                          <label
+                          <button
                             className="btn btn-primary btn-sm font-normal gap-1 px-4"
+                            disabled={!connectedAddress || emoji.seller === connectedAddress }
                             onClick={() => purchaseNFT(emoji.id, emoji.price)}>
-                            <span>Purchase</span> 
-                          </label>
+                            Purchase
+                          </button>
                         </div>
                       </div>
                     );

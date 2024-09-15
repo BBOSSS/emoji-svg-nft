@@ -143,7 +143,7 @@ export const Selling = ({ onRevoke, onUpdate }: SellingProps) => {
                             className="btn btn-primary btn-sm font-normal gap-1 px-6"
                             onClick={() => {
                               revokeOrder(emoji.id);
-                              setUpdate(!update);
+                              // setUpdate(!update);
                               onRevoke && onRevoke();
                             }}>
                             <span>Revoke</span>
